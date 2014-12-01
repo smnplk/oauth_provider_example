@@ -1,0 +1,10 @@
+class Api::V1::ContactsController < ApplicationController
+  doorkeeper_for :all  #this will require access token for all actions
+  respond_to :json
+
+
+  def index
+    contacts = Contact.all
+    respond_with(contacts)
+  end
+end

@@ -35,7 +35,7 @@ You will receive back access token and refresh token.
 IMPORTANT! Note that ideally you should not receive refresh_token back in plain text form. Because you have to store it on the client, to make a request for a new access token once the old one expires. I would suggest making additional route that can receive refresh token in encrypted form, decrypts it and redirects to /oauth/token. How to do this might be in doorkeeper docs. 
 
 
-Now you can make a GET request /api/v1/contacts, but remember to put Authorization header with value "Bearer <your_access_token>" (without the quotes) in your http request. Now you should get back the secured resource. 
+Now you can make a GET request /api/v1/contacts, but remember to put Authorization header with value "Bearer your_access_token" (without the quotes) in your http request. Now you should get back the secured resource. 
 
 
 Access token can expire and it should. In this demo app I have it set up to expire in 5 min(you can change this in doorkeeper.rb). If you make request with expired token in Authorization header, you will also get a 401 response. This is where refresh token comes in. Ofcourse you could again make the same request as above to receive new access and refresh token, but I like to use refresh tokens, because you reduce the number of times you have to send user credentials over the wire. 
